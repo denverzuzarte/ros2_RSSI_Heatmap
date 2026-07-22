@@ -1,0 +1,45 @@
+[0.550s] Invoking command in '/root/ros2_RSSI_Heatmap/src/rssi_heatmap_generator_package': AMENT_PREFIX_PATH=/root/ros2_RSSI_Heatmap/install/rosbot_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_RSSI_Heatmap/install/rosbot_interfaces:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/root/ros2_RSSI_Heatmap/install/rosbot_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages:/root/ros2_RSSI_Heatmap/install/rosbot_interfaces/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/rssi_heatmap_generator_package build --build-base /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build install --record /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/install.log --install-scripts $base/lib/rssi_heatmap_generator_package --single-version-externally-managed install_data
+[0.716s] running egg_info
+[0.716s] creating ../../build/rssi_heatmap_generator_package/rssi_heatmap_generator_package.egg-info
+[0.726s] writing ../../build/rssi_heatmap_generator_package/rssi_heatmap_generator_package.egg-info/PKG-INFO
+[0.726s] writing dependency_links to ../../build/rssi_heatmap_generator_package/rssi_heatmap_generator_package.egg-info/dependency_links.txt
+[0.726s] writing entry points to ../../build/rssi_heatmap_generator_package/rssi_heatmap_generator_package.egg-info/entry_points.txt
+[0.726s] writing requirements to ../../build/rssi_heatmap_generator_package/rssi_heatmap_generator_package.egg-info/requires.txt
+[0.726s] writing top-level names to ../../build/rssi_heatmap_generator_package/rssi_heatmap_generator_package.egg-info/top_level.txt
+[0.726s] writing manifest file '../../build/rssi_heatmap_generator_package/rssi_heatmap_generator_package.egg-info/SOURCES.txt'
+[0.746s] reading manifest file '../../build/rssi_heatmap_generator_package/rssi_heatmap_generator_package.egg-info/SOURCES.txt'
+[0.747s] writing manifest file '../../build/rssi_heatmap_generator_package/rssi_heatmap_generator_package.egg-info/SOURCES.txt'
+[0.747s] running build
+[0.747s] running build_py
+[0.747s] creating /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build
+[0.747s] creating /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build/lib
+[0.747s] creating /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build/lib/rssi_heatmap_generator_package
+[0.747s] copying rssi_heatmap_generator_package/__init__.py -> /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build/lib/rssi_heatmap_generator_package
+[0.747s] copying rssi_heatmap_generator_package/node.py -> /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build/lib/rssi_heatmap_generator_package
+[0.748s] creating /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build/lib/rssi_heatmap_generator_package/submodules
+[0.748s] copying rssi_heatmap_generator_package/submodules/__init__.py -> /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build/lib/rssi_heatmap_generator_package/submodules
+[0.748s] copying rssi_heatmap_generator_package/submodules/generate_heatmap.py -> /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build/lib/rssi_heatmap_generator_package/submodules
+[0.748s] running install
+[0.754s] running install_lib
+[0.763s] creating /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages/rssi_heatmap_generator_package
+[0.763s] copying /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build/lib/rssi_heatmap_generator_package/__init__.py -> /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages/rssi_heatmap_generator_package
+[0.763s] creating /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages/rssi_heatmap_generator_package/submodules
+[0.763s] copying /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build/lib/rssi_heatmap_generator_package/submodules/__init__.py -> /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages/rssi_heatmap_generator_package/submodules
+[0.763s] copying /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build/lib/rssi_heatmap_generator_package/submodules/generate_heatmap.py -> /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages/rssi_heatmap_generator_package/submodules
+[0.763s] copying /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build/lib/rssi_heatmap_generator_package/node.py -> /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages/rssi_heatmap_generator_package
+[0.764s] byte-compiling /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages/rssi_heatmap_generator_package/__init__.py to __init__.cpython-312.pyc
+[0.764s] byte-compiling /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages/rssi_heatmap_generator_package/submodules/__init__.py to __init__.cpython-312.pyc
+[0.764s] byte-compiling /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages/rssi_heatmap_generator_package/submodules/generate_heatmap.py to generate_heatmap.cpython-312.pyc
+[0.765s] byte-compiling /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages/rssi_heatmap_generator_package/node.py to node.cpython-312.pyc
+[0.766s] running install_data
+[0.766s] creating /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/share/ament_index
+[0.766s] creating /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/share/ament_index/resource_index
+[0.766s] creating /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/share/ament_index/resource_index/packages
+[0.766s] copying resource/rssi_heatmap_generator_package -> /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/share/ament_index/resource_index/packages
+[0.766s] copying package.xml -> /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/share/rssi_heatmap_generator_package
+[0.766s] running install_egg_info
+[0.778s] Copying ../../build/rssi_heatmap_generator_package/rssi_heatmap_generator_package.egg-info to /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages/rssi_heatmap_generator_package-1.0.0-py3.12.egg-info
+[0.778s] running install_scripts
+[0.852s] Installing node script to /root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/rssi_heatmap_generator_package
+[0.852s] writing list of installed files to '/root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/install.log'
+[0.901s] Invoked command in '/root/ros2_RSSI_Heatmap/src/rssi_heatmap_generator_package' returned '0': AMENT_PREFIX_PATH=/root/ros2_RSSI_Heatmap/install/rosbot_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros2_RSSI_Heatmap/install/rosbot_interfaces:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/root/ros2_RSSI_Heatmap/install/rosbot_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_RSSI_Heatmap/install/rssi_heatmap_generator_package/lib/python3.12/site-packages:/root/ros2_RSSI_Heatmap/install/rosbot_interfaces/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/rssi_heatmap_generator_package build --build-base /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/build install --record /root/ros2_RSSI_Heatmap/build/rssi_heatmap_generator_package/install.log --install-scripts $base/lib/rssi_heatmap_generator_package --single-version-externally-managed install_data

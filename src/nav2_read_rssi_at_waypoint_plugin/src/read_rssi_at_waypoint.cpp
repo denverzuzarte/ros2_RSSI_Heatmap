@@ -1,5 +1,6 @@
 #include <chrono>
 #include <thread>
+#include <cstdint>
 
 #include "nav2_read_rssi_at_waypoint/read_rssi_at_waypoint.hpp"
 #include "nav2_read_rssi_at_waypoint/simulated_rssi.hpp"
@@ -79,6 +80,25 @@ bool ReadRssiAtWaypoint::processAtWaypoint(
   msg.coordinates.x = robot_x;
   msg.coordinates.y = robot_y;
   msg.coordinates.z = curr_pose.pose.position.z;
+  
+  double total_rssi = 0;
+  int invalid = 0;
+  int8_t cur_reading;
+  std::chrono::milliseconds timespan(50); 
+  for(int i = 0; i < n_measurements_; i++){
+	cur_reading = simulate_rssi(robot_x, robot_y, ap_x_, ap_y_, tx_power_, path_loss_exponent_); 	
+	if(cur_reading > 0){
+		invalid++;
+	}else{
+		total_rssi += cur_reading;
+	}
+	
+	std::this_thread::sleep_for(timespan);
+  }
+  if(invalid == n_measurements_)
+	msg.rssi = -100;
+  else
+  	msg.rssi = (int8_t)(total_rssi/(n_measurements_ - invalid));
 
   // ---------------------------------------------------------------
   // TODO 1 : Simulate and average RSSI measurements at the current waypoint
@@ -99,6 +119,7 @@ bool ReadRssiAtWaypoint::processAtWaypoint(
   //     of valid measurements.
   //   • Add a short delay (50 ms) between consecutive readings to
   //     mimic real-world signal sampling.
+  
 
   RCLCPP_INFO(logger_, "  RSSI = %d dBm at (%.2f, %.2f)", msg.rssi, robot_x, robot_y);
   rssi_data_publisher->publish(msg);

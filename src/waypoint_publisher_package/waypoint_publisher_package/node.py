@@ -150,6 +150,7 @@ class FollowWaypointsClient(Node):
             f'{len(self.robot_frame_waypoint_array)}')
 
         msg = FollowWaypoints.Goal()
+        
 
         # ------------------------------------------------------------------
         # TODO 2: Convert sampled waypoints into Nav2 navigation goals

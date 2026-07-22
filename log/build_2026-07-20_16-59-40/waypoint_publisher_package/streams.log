@@ -1,0 +1,37 @@
+[0.647s] Invoking command in '/root/ros2_RSSI_Heatmap/src/waypoint_publisher_package': PYTHONPATH=/root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/waypoint_publisher_package build --build-base /root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/build install --record /root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/install.log --install-scripts $base/lib/waypoint_publisher_package --single-version-externally-managed install_data
+[0.817s] running egg_info
+[0.817s] creating ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info
+[0.825s] writing ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/PKG-INFO
+[0.825s] writing dependency_links to ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/dependency_links.txt
+[0.825s] writing entry points to ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/entry_points.txt
+[0.825s] writing requirements to ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/requires.txt
+[0.825s] writing top-level names to ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/top_level.txt
+[0.825s] writing manifest file '../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/SOURCES.txt'
+[0.843s] reading manifest file '../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/SOURCES.txt'
+[0.848s] writing manifest file '../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info/SOURCES.txt'
+[0.848s] running build
+[0.848s] running build_py
+[0.848s] creating /root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/build
+[0.848s] creating /root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/build/lib
+[0.848s] creating /root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/build/lib/waypoint_publisher_package
+[0.848s] copying waypoint_publisher_package/__init__.py -> /root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/build/lib/waypoint_publisher_package
+[0.848s] copying waypoint_publisher_package/node.py -> /root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/build/lib/waypoint_publisher_package
+[0.848s] running install
+[0.850s] running install_lib
+[0.858s] creating /root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package
+[0.859s] copying /root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/build/lib/waypoint_publisher_package/__init__.py -> /root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package
+[0.859s] copying /root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/build/lib/waypoint_publisher_package/node.py -> /root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package
+[0.859s] byte-compiling /root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package/__init__.py to __init__.cpython-312.pyc
+[0.859s] byte-compiling /root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package/node.py to node.cpython-312.pyc
+[0.860s] running install_data
+[0.860s] creating /root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/share/ament_index
+[0.860s] creating /root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/share/ament_index/resource_index
+[0.860s] creating /root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/share/ament_index/resource_index/packages
+[0.860s] copying resource/waypoint_publisher_package -> /root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/share/ament_index/resource_index/packages
+[0.860s] copying package.xml -> /root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/share/waypoint_publisher_package
+[0.860s] running install_egg_info
+[0.871s] Copying ../../build/waypoint_publisher_package/waypoint_publisher_package.egg-info to /root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/lib/python3.12/site-packages/waypoint_publisher_package-1.0.0-py3.12.egg-info
+[0.872s] running install_scripts
+[0.947s] Installing node script to /root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/lib/waypoint_publisher_package
+[0.947s] writing list of installed files to '/root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/install.log'
+[0.990s] Invoked command in '/root/ros2_RSSI_Heatmap/src/waypoint_publisher_package' returned '0': PYTHONPATH=/root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/ros2_RSSI_Heatmap/install/waypoint_publisher_package/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/waypoint_publisher_package build --build-base /root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/build install --record /root/ros2_RSSI_Heatmap/build/waypoint_publisher_package/install.log --install-scripts $base/lib/waypoint_publisher_package --single-version-externally-managed install_data

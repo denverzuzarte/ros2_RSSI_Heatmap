@@ -374,3 +374,4 @@ This project turns that job over to a robot that doesn’t just move through spa
 Complete the system, and you won’t just have a robot that navigates a room — you’ll have one that understands it well enough to reveal what humans can’t easily see.
 
 That’s the shift from robotics as movement… to robotics as insight.
+

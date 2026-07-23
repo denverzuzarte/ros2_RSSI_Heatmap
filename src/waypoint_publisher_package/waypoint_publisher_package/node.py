@@ -18,7 +18,15 @@ import numpy as np
 from collections import namedtuple
 from multiprocessing import Process
 
+import math
 
+def yaw_to_quaternion(yaw):
+    return {
+        'x': 0.0,
+        'y': 0.0,
+        'z': math.sin(yaw / 2.0),
+        'w': math.cos(yaw / 2.0),
+    }
 def show_map(map_img):
     """Display map of waypoints in a separate process."""
     plt.imshow(map_img)
@@ -68,15 +76,44 @@ class FollowWaypointsClient(Node):
     def send_goal(self):
         """Generate waypoints and send first batch."""
         self._generate_waypoints()
+        self._order_waypoints()
 
         total = len(self.robot_frame_waypoint_array)
         self.get_logger().info(
             f'Generated {total} waypoints — sending in batches of {self.batch_size}')
 
         self._send_next_batch()
+    
+    def _order_waypoints(self):
+        ordered = [];
+        current = self.origin
+        remaining = self.robot_frame_waypoint_array
+        while remaining:
+            dists = [np.linalg.norm(current - np.array(w)) for w in remaining]
+            nearest_idx = int(np.argmin(dists))
+            current = np.array(remaining[nearest_idx])
+            remaining.pop(nearest_idx)
+            ordered.append(current)
+        ordered.append(Waypoint(0,0))
+        self.robot_frame_waypoint_array = ordered
 
     def _generate_waypoints(self):
         """Generate waypoints from the occupancy map."""
+        
+        
+        # ordering the final list of waypoints - not mentioned 
+        # sadly since the - travelling sales man problem is not solvable we will use NN
+        
+        img_grey = cv2.cvtColor(self.map, cv2.COLOR_BGR2GRAY)
+        _, img_tresh = cv2.threshold(img_grey, 230, 255, cv2.THRESH_BINARY)
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2*self.collision_range+1, 2*self.collision_range+1))
+        img_erosion = cv2.erode(img_tresh, kernel, iterations=1)
+
+        for y in range(0, len(self.map), self.density):
+            for x in range(0, len(self.map[0]), self.density):
+                if(img_erosion[y, x]):
+                    point = Waypoint(x, y)
+                    self.robot_frame_waypoint_array.append(point) 
 
         # ------------------------------------------------------------------
         # TODO 1: Generate collision-free waypoints from the occupancy map
@@ -130,7 +167,7 @@ class FollowWaypointsClient(Node):
 
         start = self.batch_index * self.batch_size
         end = min(start + self.batch_size,
-                  len(self.robot_frame_waypoint_array))
+                  len(self.robot_frame_waypoint_array) - 1)
         batch = self.robot_frame_waypoint_array[start:end]
 
         if not batch:
@@ -151,6 +188,21 @@ class FollowWaypointsClient(Node):
 
         msg = FollowWaypoints.Goal()
         
+        msg.poses = []
+        for i, waypoint in enumerate(batch)):
+            pose = PoseStamped()
+            dx = self.robot_frame_waypoint_array[start+i+1].x - waypoint.x
+            dy = self.robot_frame_waypoint_array[start+i+1].y - waypoint.y
+            yaw = math.atan2(dy, dx)
+            qx, qy, qz, qw = yaw_to_quaternion(yaw)
+            pose.orientation.x = qx
+            pose.orientation.y = qy
+            pose.orientation.z = qz
+            pose.orientation.w = qw
+            pose.position.x = waypoint.x
+            pose.position.y = waypoint.y
+            pose.position.z = 0
+            msg.poses.append(pose)
 
         # ------------------------------------------------------------------
         # TODO 2: Convert sampled waypoints into Nav2 navigation goals

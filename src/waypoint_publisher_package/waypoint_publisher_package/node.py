@@ -76,8 +76,9 @@ class FollowWaypointsClient(Node):
     def send_goal(self):
         """Generate waypoints and send first batch."""
         self._generate_waypoints()
+        print("generated waypoints")
         self._order_waypoints()
-
+        print("ordered way points")
         total = len(self.robot_frame_waypoint_array)
         self.get_logger().info(
             f'Generated {total} waypoints — sending in batches of {self.batch_size}')
@@ -87,14 +88,14 @@ class FollowWaypointsClient(Node):
     def _order_waypoints(self):
         ordered = [];
         current = self.origin
-        remaining = self.robot_frame_waypoint_array
+        remaining = list(self.robot_frame_waypoint_array)
         while remaining:
             dists = [np.linalg.norm(current - np.array(w)) for w in remaining]
             nearest_idx = int(np.argmin(dists))
-            current = np.array(remaining[nearest_idx])
-            remaining.pop(nearest_idx)
-            ordered.append(current)
-        ordered.append(Waypoint(0,0))
+            nearest = remaining.pop(nearest_idx)
+            current = np.array(nearest)
+            ordered.append(nearest)
+        ordered.append(Waypoint(0.0 ,0.0))
         self.robot_frame_waypoint_array = ordered
 
     def _generate_waypoints(self):
@@ -112,11 +113,13 @@ class FollowWaypointsClient(Node):
         for y in range(0, len(self.map), self.density):
             for x in range(0, len(self.map[0]), self.density):
                 if(img_erosion[y, x]):
-                    point = Waypoint(x, y)
+                    world_x = self.origin.x + x * self.resolution
+                    world_y = self.origin.y + (img_erosion.shape[0] - y) * self.resolution
+                    point = Waypoint(float(world_x), float(world_y))
                     self.robot_frame_waypoint_array.append(point) 
 
         # ------------------------------------------------------------------
-        # TODO 1: Generate collision-free waypoints from the occupancy map
+        # DONE 1: Generate collision-free waypoints from the occupancy map
         # ------------------------------------------------------------------
         # The saved occupancy map represents the environment as an image,
         # where each pixel corresponds to either free space, an obstacle,
@@ -189,23 +192,31 @@ class FollowWaypointsClient(Node):
         msg = FollowWaypoints.Goal()
         
         msg.poses = []
-        for i, waypoint in enumerate(batch)):
-            pose = PoseStamped()
+        for i, waypoint in enumerate(batch):
+            #print("meassage 1")
+            sp = PoseStamped()
+            #print("meassage 2")
             dx = self.robot_frame_waypoint_array[start+i+1].x - waypoint.x
+            #print("meassage 3")
             dy = self.robot_frame_waypoint_array[start+i+1].y - waypoint.y
+            #print("meassage 4")
             yaw = math.atan2(dy, dx)
-            qx, qy, qz, qw = yaw_to_quaternion(yaw)
-            pose.orientation.x = qx
-            pose.orientation.y = qy
-            pose.orientation.z = qz
-            pose.orientation.w = qw
-            pose.position.x = waypoint.x
-            pose.position.y = waypoint.y
-            pose.position.z = 0
-            msg.poses.append(pose)
+            #print("meassage 5")
+            q = yaw_to_quaternion(yaw)
+            qx, qy, qz, qw = q['x'], q['y'], q['z'], q['w']
+            sp.header.frame_id = 'map'
+            sp.header.stamp = self.get_clock().now().to_msg()
+            sp.pose.orientation.x = qx
+            sp.pose.orientation.y = qy
+            sp.pose.orientation.z = qz
+            sp.pose.orientation.w = qw
+            sp.pose.position.x = waypoint.x
+            sp.pose.position.y = waypoint.y
+            sp.pose.position.z = 0.0
+            msg.poses.append(sp)
 
         # ------------------------------------------------------------------
-        # TODO 2: Convert sampled waypoints into Nav2 navigation goals
+        # DONE 2: Convert sampled waypoints into Nav2 navigation goals
         # ------------------------------------------------------------------
         # Nav2 accepts navigation targets as PoseStamped messages rather
         # than simple (x, y) coordinates. Convert every waypoint in the
@@ -234,12 +245,13 @@ class FollowWaypointsClient(Node):
         # Once completed, the FollowWaypoints action server will receive
         # the batch and autonomously navigate through each waypoint in
         # sequence.
-        
+        print("message 6")
         self._action_client.wait_for_server()
         self._send_goal_future = self._action_client.send_goal_async(msg)
         self._send_goal_future.add_done_callback(self._response_callback)
 
     def _response_callback(self, future):
+        print("message response")
         goal_handle = future.result()
 
         self.get_logger().info(
@@ -249,6 +261,7 @@ class FollowWaypointsClient(Node):
         self._get_result_future.add_done_callback(self._result_callback)
 
     def _result_callback(self, future):
+        print("message result")
         self.get_logger().info(
             f'Batch {self.batch_index + 1} complete')
 

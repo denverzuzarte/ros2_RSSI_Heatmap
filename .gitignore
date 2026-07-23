@@ -22,6 +22,8 @@ devel_isolated/
 *.cfgc
 /cfg/cpp/
 /cfg/*.py
+*.swp
+*.swo
 
 # Ignore generated docs
 *.dox

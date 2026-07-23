@@ -47,9 +47,10 @@ class HeatmapGenerator(Node):
         os.makedirs(self.heatmaps_dir,exist_ok=True)
 
     def rssi_data_callback(self,msg):
+        
 
         # ---------------------------------------------------------------
-        # TODO 1: Convert world coordinates into map pixel coordinates
+        # Done Before  Hand for some reason - 1: Convert world coordinates into map pixel coordinates
         # ---------------------------------------------------------------
         # RSSI measurements are received in the map (world) coordinate frame,
         # expressed in meters. However, the heatmap is generated on the map
